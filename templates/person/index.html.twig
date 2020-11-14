@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Person index!{% endblock %}
+
+{% block body %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="css/person_style.css"/>
+{% endblock %} 
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h2>Datos personales</h2>
+    <label for="ci_persona" class="sr-only">Cédula de identidad: </label>
+    <input type="text" id="ci_persona" name="ci_persona"><br><br>
+
+    <label for="nombres" class="sr-only">Nombres: </label>
+    <input type="text" id="nombres" name="nombres"><br><br>
+    
+    <label for="apellidos" class="sr-only">Apellidos: </label>
+    <input type="text" id="apellidos" name="apellidos"><br><br>
+    
+    <label for="banco" class="sr-only">Vincular con banco(Nombre banco): </label>
+    <input type="text" id="banco" name="banco"><br><br>
+
+    <label for="docs" class="sr-only">Documentos que respalden la informacion ingresada: </label><br>
+    <input type="file" id="docs" name="docs"><br><br>
+
+    <input type="submit" value="Finalizar registro!">
+</div>
+
+{% endblock %}
