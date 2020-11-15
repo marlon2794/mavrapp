@@ -13,13 +13,8 @@ class PersonController extends AbstractController
      */
     public function index(): Response
     {
-        /*return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/PersonController.php',
-        ]);*/
-
         return $this->render('person/index.html.twig', [
-            'controller_name' => 'PersonController',
+            'controller_name' => 'Person Controller',
         ]);
     }
 }
