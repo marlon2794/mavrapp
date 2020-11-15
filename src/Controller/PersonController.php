@@ -2,11 +2,17 @@
 
 namespace App\Controller;
 
+// Mapeo de la clase person.php
 use App\Entity\Person;
+// para usar ORM en la base de datos
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
+// Validator permite que no vayan valores que por ejemplo si declaramos en la base de datos que sean nulos,
+// lo mejor es que no sean nulos
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class PersonController extends AbstractController
 {
@@ -43,11 +49,17 @@ class PersonController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
 
         $person = new Person();
-        $person->setNombres('Dario Jefferson');
+        $person->setNombres(null);
         $person->setApellidos('Chilquinega Quihspe');
         $person->setCi('1722162698');
         $person->setIdPerson('hvjvki678otlg');
         $person->setTipoBanco('Banco ddel Pichincha');
+
+        // Control de errores
+        $errors = $validator->validate($person);
+        if (count($errors) > 0) {
+            return new Response((string) $errors, 400);
+        }
 
         // tell Doctrine you want to (eventually) save the Person (no queries yet)
         $entityManager->persist($person);
@@ -56,5 +68,27 @@ class PersonController extends AbstractController
         $entityManager->flush();
 
         return new Response('Saved new person id '.$person->getId());
+    }
+
+    /**
+    * @Route("/person/{id}", name="person_show")
+    */
+    public function show($id)
+    {
+        $person = $this->getDoctrine()
+            ->getRepository(Person::class)
+            ->find($id);
+
+        if (!$person) {
+            throw $this->createNotFoundException(
+                'No person found for id '.$id
+            );
+        }
+
+        return new Response('Check out this great product: '.$person->getNombres());
+
+        // or render a template
+        // in the template, print things with {{ product.name }}
+        // return $this->render('product/show.html.twig', ['product' => $product]);
     }
 }
