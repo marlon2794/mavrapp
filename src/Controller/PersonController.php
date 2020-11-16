@@ -14,6 +14,10 @@ use Symfony\Component\Routing\Annotation\Route;
 // lo mejor es que no sean nulos
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+// para poder redireccionar a otras rutas URL
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+
 class PersonController extends AbstractController
 {
     /**
@@ -35,40 +39,27 @@ class PersonController extends AbstractController
 
         //$var = "var";
         return $this->render('person/index.html.twig', [
-            'controller_name' => $db["host"],
+            'controller_name' => "",
         ]);
     }
 
     /**
-     * @Route("/create-person", name="create_person")
+     * @Route("/person/create-person", name="create_person", methods={"POST"})
      */
     public function createPerson(): Response
     {
-        // you can fetch the EntityManager via $this->getDoctrine()
-        // or you can add an argument to the action: createProduct(EntityManagerInterface $entityManager)
-        $entityManager = $this->getDoctrine()->getManager();
-
-        $person = new Person();
-        $person->setNombres(null);
-        $person->setApellidos('Chilquinega Quihspe');
-        $person->setCi('1722162698');
-        $person->setIdPerson('hvjvki678otlg');
-        $person->setTipoBanco('Banco ddel Pichincha');
-
-        // Control de errores
-        $errors = $validator->validate($person);
-        if (count($errors) > 0) {
-            return new Response((string) $errors, 400);
-        }
-
-        // tell Doctrine you want to (eventually) save the Person (no queries yet)
-        $entityManager->persist($person);
-
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
-
-        return new Response('Saved new person id '.$person->getId());
+        $nombres = $_POST['nombres'];
+        return new Response('Create person! ' . $nombres);
     }
+
+    // /**
+    //  * @Route("/person/request", name="person_request", methods={"POST"})
+    //  */
+    // public function requestPerson(): Response
+    // {
+    //     $nombres = $_POST['nombres'];
+    //     return new Response('Create person! ' . $nombres);
+    // }
 
     /**
     * @Route("/person/{id}", name="person_show")

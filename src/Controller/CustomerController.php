@@ -36,7 +36,7 @@ class CustomerController extends AbstractController
     }
 
     /**
-    * @Route("/create/customer/{id<\d+>}", methods={"POST"}, name="create_customer")
+    * @Route("/create/customer/{id}", name="create_customer")
     */
     public function create(int $id): Response
     {
