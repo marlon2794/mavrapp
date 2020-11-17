@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block title %}xPACEBUZz!{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="css/index_style.css"/>
+{% endblock %} 
+
+{% block body %}
+    <div class="jumbotron">
+        <h1 class="title display-4">Bienvenido a xPACEBUZz</h1>
+        <p class="lead">xPACEBUZz es una plataforma virtual fomentada a la aplicación de nuevas tecnologías como machine learning y IoT orientada al sector de transporte público</p>
+        <hr class="my-4">
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Sobre nosotros</a>
+        </p>
+    </div>
+
+    <div class="container">
+    <!-- Example row of columns -->
+        <div class="row">
+            <div class="jbtroncolumn col-md-5">
+                <a class="btn" href="/person" role="button"><h2>Registro personas &raquo;</h2></a>
+                <h3>Registro para personas que utilizan el transporte público como medio de transporte. </h3>
+            </div>
+            <div class="jbtroncolumn col-md-6">
+                <a class="btn btn-secondary" href="/bus" role="button"><h2>Registro transporte público &raquo;</h2></a>
+                <h3>Registro para buses de cooperativas a nivel del DMQ</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+{% endblock %}

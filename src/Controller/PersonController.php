@@ -48,8 +48,27 @@ class PersonController extends AbstractController
      */
     public function createPerson(): Response
     {
-        $nombres = $_POST['nombres'];
-        return new Response('Create person! ' . $nombres);
+        // you can fetch the EntityManager via $this->getDoctrine()
+        // or you can add an argument to the action: createProduct(EntityManagerInterface $entityManager)
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $person = new Person();
+        $person->setNombres($_POST['nombres']);
+        $person->setApellidos($_POST['apellidos']);
+        $person->setCi($_POST['ci']);
+
+        $person->setIdPerson(rand(0,1000000));
+        $person->setTipoBanco($_POST['tipo_banco']);
+
+        // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($person);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+        return $this->render('person/show.html.twig', [
+            'controller_name' => $person->getNombres(),
+        ]);
     }
 
     // /**

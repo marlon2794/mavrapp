@@ -2,34 +2,37 @@
 
 {% block title %}Person index!{% endblock %}
 
-{% block body %}
 {% block stylesheets %}
     <link rel="stylesheet" href="css/person_style.css"/>
 {% endblock %} 
 
-<div class="example-wrapper">
-    <form action="/person/create-person" method="POST">
-        <h1>Bienvenido {{ controller_name }}! ✅</h1>
-        <h2>Datos personales</h2>
-        
-        <label for="ci_persona" class="sr-only">Cédula de identidad: </label>
-        <input type="text" id="ci_persona" name="ci_persona"><br><br>
+{% block body %}
 
-        <label for="nombres" class="sr-only">Nombres: </label>
-        <input type="text" id="nombres" name="nombres"><br><br>
-        
-        <label for="apellidos" class="sr-only">Apellidos: </label>
-        <input type="text" id="apellidos" name="apellidos"><br><br>
-        
-        <label for="banco" class="sr-only">Vincular con banco(Nombre banco): </label>
-        <input type="text" id="banco" name="banco"><br><br>
+<div class="container">
+  <h1>Datos personales</h1>
+  <form action="/person/create-person" method="POST">
+        <label for="ci">Cédula de identidad: </label>
+        <input type="text" id="ci" name="ci" class="form-control" aria-describedby="emailHelp" placeholder="Cédula de identidad" required autofocus>
+        <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--><br>
 
-        <label for="docs" class="sr-only">Documentos que respalden la informacion ingresada: </label><br>
+        <label for="nombres">Nombres: </label>
+        <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Nombres" required autofocus><br>
+        
+        <label for="apellidos">Apellidos: </label>
+        <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos" required autofocus><br>
+        
+        <label for="tipo_banco">Vincular con banco(Nombre banco): </label>
+        <input type="text" id="tipo_banco" name="tipo_banco" class="form-control" placeholder="Banco" required autofocus><br>
+
+        <label for="docs">Documentos que respalden la informacion ingresada: </label><br>
         <input type="file" id="docs" name="docs"><br><br>
 
-        <input type="submit" value="Finalizar registro!">
+        <input type="submit" class="btn btn-primary" value="Finalizar registro!">
     </form>
-
 </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 
 {% endblock %}

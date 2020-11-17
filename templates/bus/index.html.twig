@@ -2,40 +2,40 @@
 
 {% block title %}Bus index!{% endblock %}
 
-{% block body %}
 {% block stylesheets %}
     <link rel="stylesheet" href="css/bus_style.css"/>
 {% endblock %} 
 
+{% block body %}
+
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! </h1>
     <h2>Datos del conductor</h2>
-    <label for="ci_conductor" class="sr-only">Cédula de identidad del conductor: </label>
+    <label for="ci_conductor">Cédula de identidad del conductor: </label>
     <input type="text" id="ci_conductor" name="ci_conductor"><br><br>
 
-    <label for="nombres" class="sr-only">Nombres: </label>
+    <label for="nombres">Nombres: </label>
     <input type="text" id="nombres" name="nombres"><br><br>
     
-    <label for="apellidos" class="sr-only">Apellidos: </label>
+    <label for="apellidos">Apellidos: </label>
     <input type="text" id="apellidos" name="apellidos"><br><br>
     
-    <label for="tip_lic_conducir" class="sr-only">Tipo de licencia de conducir: </label>
+    <label for="tip_lic_conducir">Tipo de licencia de conducir: </label>
     <input type="text" id="tip_lic_conducir" name="tip_lic_conducir"><br><br>
     
     <h2>Datos del bus</h2>
-    <label for="cooperativa" class="sr-only">Cooperativa: </label>
+    <label for="cooperativa">Cooperativa: </label>
     <input type="text" id="cooperativa" name="cooperativa"><br><br>
     
-    <label for="num_unidad" class="sr-only">Numero de unidad: </label>
+    <label for="num_unidad">Numero de unidad: </label>
     <input type="text" id="num_unidad" name="num_unidad"><br><br>
     
-    <label for="provincia_op" class="sr-only">Provincia: </label>
+    <label for="provincia_op">Provincia: </label>
     <input type="text" id="provincia_op" name="provincia_op"><br><br>
     
-    <label for="banco" class="sr-only">Vincular con banco(Nombre banco): </label>
+    <label for="banco">Vincular con banco(Nombre banco): </label>
     <input type="text" id="banco" name="banco"><br><br>
 
-    <label for="docs" class="sr-only">Documentos que respalden la informacion ingresada: </label><br>
     <input type="file" id="docs" name="docs"><br><br>
     
 
